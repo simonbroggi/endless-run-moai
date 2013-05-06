@@ -1,7 +1,6 @@
 local scene = {}
 
 scene.isRunning = false
-print("Doing scene")
 
 function scene:load()
 	self.layer = MOAILayer2D.new()
@@ -64,18 +63,8 @@ function scene:load()
 
 	self.points = require("points")
 	self.points:loadDeck()
-	local startX = -400
-	local numX = 0
 
-	while numX < 120 do
-		numX = numX+1
-		if math.random(4) == 1 then
-			self.points:new(self.layer, startX - numX*150, -90)
-		end
-		if math.random(4) == 1 then
-			self.points:new(self.layer, startX - numX*150, 200)	
-		end		
-	end
+	self.points:initialize(self.layer, 10)
 
 	self.layer:insertProp ( self.clayRunner )
 
